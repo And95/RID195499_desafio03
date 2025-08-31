@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <main>
+    <!-- Obs.: Sendo o <header> especificamente ao conteúdo da seção principal, e não ao site todo.
+         Nesse caso, o <header> é do conteúdo do <main>, e não do site inteiro. Estando dentro das regras da semântica HTML5. -->
+    <header>
+      <div>
+        <h1>Board de tarefas</h1>
+      </div>
+    </header>
+    <!--Input Task-->
+    <section>
+      <form>
+        <input type="text" required id="title" name="task" class="inputTask" placeholder="Nome da tarefa" aria-label="Qual a tarefa que deseja cadastrar?" />
+        <input type="text" required id="activity" name="label" class="inputTask" placeholder="Etiqueta" aria-label="Qual a etiqueta que deseja cadastrar" />
+        <button type="submit" id="inputTaskBtn" aria-label="Cadastrar tarefa">+</button>
+      </form>
+    </section>
+    <!--Tasks-->
+    <section>
+    </section>
+    <footer>
+      <div class="foooterDoneTasks">
+        <span id="footerLineUp"></span>
+        <p id="footerCount"></p>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>
