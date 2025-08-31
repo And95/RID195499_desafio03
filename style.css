@@ -311,6 +311,7 @@ form button {
     height: 13em;
     grid-template-columns: 1fr;
     padding: 0px 1em;
+    margin: 1em 0px;
   }
 
   .innerTaskActivityDate {
@@ -342,4 +343,5 @@ form button {
     border: 0.5px solid #eee;
   }
 }
+
 
