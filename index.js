@@ -141,9 +141,10 @@ document.addEventListener("click", (e) => {
     button.style.display = "none"; // esconde o botão
     img.style.display = "inline"; // mostra a imagem
 
+    // pega o <h2> do título desta task
     const taskTitleMarkup = button.closest(".task").querySelector(".taskTitle");
-    taskTitleMarkup.style.textDecoration = "line-through";
-    taskTitleMarkup.style.color = "#8F98A8";
+    // chama a função passando o elemento
+    setTaskTitleMarkup(taskTitleMarkup);
 
     // Atualiza no localStorage que está concluída
     const id = parseInt(button.dataset.id);
@@ -151,6 +152,13 @@ document.addEventListener("click", (e) => {
     getCountDoneTask(); // atualiza contador
   }
 });
+
+/**************************************************/
+/* fucntion to markup the title tasks done */
+const setTaskTitleMarkup = (taskTitleElement) => {
+  taskTitleElement.style.textDecoration = "line-through";
+  taskTitleElement.style.color = "#8F98A8";
+};
 
 /**************************************************/
 /* fucntion to count the task in real time */
@@ -168,13 +176,20 @@ getCountDoneTask = () => {
 
 /**************************************************/
 window.onload = () => {
-  setTasksInLocalStorage(tasks_fixed);
+  const tasks = getTasksFromLocalStorage();
+  //setTasksInLocalStorage(tasks_fixed);
+  setTasksInLocalStorage(tasks);
 
   const form = document.querySelector("form");
   form.addEventListener("submit", createTask);
 
-  const tasks = getTasksFromLocalStorage();
-  tasks.forEach(renderTask);
-
+  tasks.forEach((task) => {
+    renderTask(task);
+    // se a tarefa já está checked, estiliza o título:
+    if (task.checked) {
+      const lastTaskTitle = document.querySelectorAll(".taskTitle");
+      setTaskTitleMarkup(lastTaskTitle[lastTaskTitle.length - 1]);
+    }
+  });
   getCountDoneTask();
 };
