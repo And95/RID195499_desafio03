@@ -176,13 +176,15 @@ getCountDoneTask = () => {
 
 /**************************************************/
 window.onload = () => {
-  const tasks = getTasksFromLocalStorage();
-  //setTasksInLocalStorage(tasks_fixed);
-  setTasksInLocalStorage(tasks);
+  if (getTasksFromLocalStorage().length === 0) {
+    setTasksInLocalStorage(tasks_fixed);
+  }
 
   const form = document.querySelector("form");
   form.addEventListener("submit", createTask);
 
+  const tasks = getTasksFromLocalStorage();
+  setTasksInLocalStorage(tasks);
   tasks.forEach((task) => {
     renderTask(task);
     // se a tarefa já está checked, estiliza o título:
